@@ -1,0 +1,183 @@
+
+body
+{
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Cabin', sans-serif;
+	font-size:17px;
+	color:black;
+}
+
+#tdLink{
+	text-decoration:none;
+	color:black;
+	border:0;
+}
+
+#headphonesTd{
+	width:180px;
+	padding-right:20px;
+	padding-left:20px;
+	padding-top:20px;
+}
+
+
+
+#products{
+	text-align:center;
+	border:none;
+	border:0;
+}
+
+#ad{
+	float:left;
+	margin-left:70px;
+	margin-top:40px;
+}
+
+#adTd{
+	padding-top:35px;
+ 	border: 1px solid black;
+}
+
+#firstTd{
+ 	border: 1px solid black;
+}
+
+#adTable{
+	border-spacing:0 px;
+ 	border-collapse: collapse;
+}
+
+#productsTd{
+	padding-right:20px;
+	padding-left:20px;
+	border:0;
+}
+
+#container 
+{
+	width:1000px;
+     margin:0 auto;
+}
+
+#menu
+{
+	float:left;
+	width:220px;
+	padding-left:10px;	
+}
+
+#myAccount
+{
+	font-size:20px;
+	font-weight:bold;
+	display: inline;
+	word-spacing: 10px;
+	text-decoration:none;
+}
+
+#greenInfo{
+	color:#07ef00;
+	display:inline;
+	word-spacing: 5px;
+}
+
+#miniLogo{
+	float:left;
+	padding-top:7px;
+}
+
+#itemDescTable{
+	 border: 1px solid #e8e8e8;
+}
+
+#descTable{
+	border-spacing:0 px;
+	border-collapse: collapse;
+}
+
+#soldAnd{
+	padding-top:10px;
+	float:left;
+}
+
+#fullDescription{
+	width:600px;
+	margin-left:15px;
+}
+
+
+
+#fancyLink
+{
+	color:#0065ff;
+	text-decoration:none;
+	font-family: 'lobster', cursive;
+	font-size:30px;
+}
+
+#account
+{
+	margin-left:10px;
+	color:black;
+	text-decoration:none;
+	font-size:20px;
+}
+
+#content
+{
+	margin-left:20px;
+	float:left;
+	width:500px;
+}
+
+#contentHeadphones{
+	margin-left:20px;
+	float:left;
+}
+
+#headphonesImgContent{
+	float:left;
+	width:500px;
+}
+
+#link
+{
+	color:black;
+	text-decoration:none;
+}
+
+p{
+	word-spacing: 30px;
+}
+
+#price{
+	color:#5383d1;
+	font-weight:bold;
+	font-size:30px;
+}
+
+#secondP
+{
+	
+	word-spacing: 80px;
+}
+
+h3
+{
+	font-family: 'Cabin', sans-serif;
+	font-weight:bold;
+}
+
+#liCategories{
+	margin: 10px 0;
+}
+
+li 
+{
+  color: #3783fc; /* bullet color */
+}
+li span 
+{
+  color: black; /* text color */
+}

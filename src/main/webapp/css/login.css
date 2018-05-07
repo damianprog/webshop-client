@@ -1,0 +1,118 @@
+body {
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	color: black;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#logo {
+	position: absolute;
+	z-index: 15;
+	top: 12%;
+	left: 50%;
+	margin: -60px 0 0 -150px;
+}
+
+#header {
+	position: absolute;
+	z-index: 15;
+	top: 32%;
+	left: 50%;
+	margin: -135px 0 0 -150px;
+}
+
+h1 {
+	font-weight: normal;
+}
+
+#inputsContainer {
+	position: absolute;
+	background-color: white;
+	width: 360px;
+	height: 423px;
+	border-radius: 7px;
+	left: 50%;
+	top: 14%;
+	margin-top: 310px;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	border-size: 0.5px;
+	border-style: solid;
+	border-width: thin;
+	border-color: #9b9b9b;
+	text-align: center;
+}
+
+.inputBox {
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	border: 0.5px solid #9b9b9b;
+}
+
+table {
+	margin-top: 20px;
+	margin-left: 50px;
+	text-align:left;
+}
+
+table td{
+	color:#666;
+}
+.inputCells{
+	padding-bottom:15px;
+}
+
+#signIn{
+	margin-top:15px;
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: #0980d7;
+	font-weight:bold;
+	color:white;
+}
+
+#createAccount{
+	margin-top:15px;
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: white;
+	font-weight:bold;
+	border: 0.5px solid #9b9b9b;
+	text-align:center;
+	display: table;
+}
+
+#createAccountText{
+	display: table-cell;
+	vertical-align:middle;
+}
+
+#spanCAT{
+	text-decoration:none;
+	color:#0980d7;
+}
+
+#forgotLabel{
+	text-align:right;
+}
+
+#accountLabel{
+	padding-top:15px;
+	color:black;
+	text-align:center;
+	font-size:17px;
+}
+
+#errorInfoTable td{
+	font-size:17px;
+	color:black;
+	padding-bottom:15px;
+}

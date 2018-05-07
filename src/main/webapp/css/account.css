@@ -1,0 +1,76 @@
+
+body
+{
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Roboto', sans-serif;
+	font-size:17px;
+	color:black;
+}
+
+#container 
+{
+	width:1000px;
+     margin:0 auto;
+}
+
+#infoLabel{
+	margin-bottom:30px;
+}
+
+.sideTable{
+	
+	margin-left:15px;
+	font-size:15px;
+	color:#0074b8;
+	
+}
+
+#contentTable{
+	
+	margin-left:15px;
+	font-size:20px;
+	
+}
+
+
+#contentTable td{
+	
+	padding-bottom:20px;
+	
+}
+
+.sideTable td{
+	
+	padding-bottom:20px;
+	
+}
+
+#sideTablesDiv{
+	float:left;
+}
+
+#contentDiv{
+	float:left;
+	margin-left:100px;
+	width:
+}
+
+hr{
+	margin-top:20px;
+	margin-bottom:20px;
+	width:700px;
+}
+.icon{
+	vertical-align:middle;
+	padding-right:15px;
+}
+
+.blueHref{
+	text-decoration:none;
+	color:#0074b8;
+}
+
+.aAccountContent{
+	text-decoration:none;
+	color:black;
+}

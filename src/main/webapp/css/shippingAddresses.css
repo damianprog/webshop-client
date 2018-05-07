@@ -1,0 +1,64 @@
+body {
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	color: black;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#pageInfoHeader {
+	font-size: 15px;
+	margin-top: 15px;
+}
+
+.blueHref {
+	text-decoration: none;
+	color: #0074b8;
+}
+
+#addressesDescription {
+	font-size: 15px;
+	margin-bottom: 30px;
+	w
+}
+
+.greySmallText {
+	font-size: 15px;
+	color: #666;
+	font-weight: bold;
+}
+
+#shippingAddressesTable {
+	margin-top: 20px;
+}
+
+#shippingAddressesTable td {
+	color: #666;
+	font-size: 15px;
+	padding-bottom: 20px;
+}
+
+.rightTd {
+	padding-left: 50px;
+}
+
+.inputBoxShippingAddresses {
+	width: 400px;
+	height: 40px;
+	border-radius: 3px;
+	border: 0.5px solid #9b9b9b;
+}
+
+#saveAddress{
+	margin-top:15px;
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: #0980d7;
+	font-weight:bold;
+	color:white;
+}
