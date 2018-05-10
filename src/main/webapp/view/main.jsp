@@ -21,84 +21,106 @@
 <body>
 
 	<div id="container">
-		
+
 		<jsp:include page='/view/header.jsp' />
+
+		<c:url var="videoGames" value="/main/showCategory">
+			<c:param name="category">Video Games</c:param>
+		</c:url>
 		
-		<div id="menu">
-
-
-			<h2>Menu</h2>
-			<ul>
-				<li><span><a id="link" href="/view/created.jsp">Main</a></span></li>
-				<li><span><a id="link" href="/login">About
-							Shop</a></span></li>
-				<li><span><a id="link" href="${contactLink}">Contact</a></span></li>
-			</ul>
-
-			<c:url var="headphones" value="showProduct">
-				<c:param name="productName">Beats EP On-Ear Headphones</c:param>
-			</c:url>
-
-			<h2>Categories</h2>
-			<ul>
-				<li id="liCategories"><span><a id="link"
-						href="${headphones}">Headphones</a></span></li>
-				<li id="liCategories"><span><a id="link"
-						href="${videoGamesLink}">Video Games</a></span></li>
-				<li id="liCategories"><span><a id="link"
-						href="${printersLink}">Printers</a></span></li>
-			</ul>
-
-		</div>
+		<c:url var="headphones" value="/main/showCategory">
+			<c:param name="category">Headphones</c:param>
+		</c:url>
+		
+		<c:url var="laptops" value="/main/showCategory">
+			<c:param name="category">Laptops</c:param>
+		</c:url>
+		
+		<c:url var="phones" value="/main/showCategory">
+			<c:param name="category">Phones</c:param>
+		</c:url>
+		
+		<c:url var="drones" value="/main/showCategory">
+			<c:param name="category">Drones</c:param>
+		</c:url>
+		
+		<c:url var="tvs" value="/main/showCategory">
+			<c:param name="category">TV</c:param>
+		</c:url>
 
 		<div id="content">
-			<h3>Electronics</h3>
-			If you're considering a new laptop, looking for a powerful new car
-			stereo or shopping for a new HDTV, we make it easy to find exactly
-			what you need at a price you can afford. We offer Every Day Low
-			Prices on TVs, laptops, cell phones, tablets and iPads, video games,
-			desktop computers, cameras and camcorders, audio, video and more.<br /></br>
-			<h3>Shop By Category</h3>
-			<br />
 
-			<table id="products">
-				<tr>
-					<td id="productsTd"><a id="tdLink" href="${headphonesLink}">
-							<img src="/css/img/headphones.jpg" /><br /> Headphones
-					</a></td>
-					<td id="productsTd"><img src="/css/img/videogames.jpg" /><br />
-						Video Games</td>
-					<td id="productsTd"><img src="/css/img/printers.jpg" /><br />
-						Printers</td>
-				</tr>
-			</table>
+			<div id="mainPhoto">
+				<img src="/css/img/topMainPhoto.png">
 
-		</div>
+				<div id="whiteBoxMainPhoto">
+					<div id="mainPhotoDesc">True 4K Gaming</div>
+					<div id="mainPhotoGreyDesc">Unlock the ultimate gaming
+						experience.</div>
+					<div id="mainPhotoCategoryLink">
+						<a href="${videoGames}">Category Video Games <img
+							style="vertical-align: middle;" src="/css/img/next.png">
+						</a>
+					</div>
+				</div>
+			</div>
 
-		<div id="ad">
+			<div id="categoriesTiles">
 
-			<table id="adTable">
+				<div id="categoriesTilesHeader">Shop By Category</div>
 
-				<tr>
-					<td id="firstTd"><a id="adTdLink" href="${beatsSolo3}"> <img
-							src="/css/img/miniBeatsSolo3.jpg"> <br /> $156.49 <br />
-							Beats Solo3 Wireless
-					</a></td>
-				</tr>
-				<tr>
-					<td id="adTd"><a id="adTdLink" href="${beatsSolo2Luxe}"> <img
-							src="/css/img/miniBeatsSolo2Luxe.jpg"> <br /> $126.49 <br />
-							Beats Solo 2 Luxe
-					</a></td>
-				</tr>
-				<tr>
-					<td id="adTd"><a id="adTdLink" href="${beatsEpWhite}"> <img
-							src="/css/img/miniBeatsEpWhite.jpg"> <br /> $75.00 <br />
-							Beats Ep White
-					</a></td>
-				</tr>
+				<table id="categoriesTilesTable">
+					<tr>
+					
+						<td>
+						<a href="${videoGames}">
+						<img src="/css/img/xbox-one.png">
+							<br>
+							Video Games
+							</a>
+						</td>
+						<td>
+						<a href="${headphones}">
+						<img src="/css/img/jblHeadphones.png">
+							<br>
+							Headphones
+						</a>
+						</td>
+						<td>
+						<a href="${laptops}">
+						<img src="/css/img/laptop.png">
+							<br>
+							Laptops
+						</a>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						<a href="${phones}">
+						<img src="/css/img/phones.png">
+							<br>
+							Phones
+						</a>
+						</td>
+						<td>
+						<a href="${drones}">
+						<img src="/css/img/drones.png">
+							<br>
+							Drones
+						</a>
+						</td>
+						<td>
+						<a href="${tvs}">
+						<img src="/css/img/tvs.png">
+							<br>
+							TV's
+						</a>
+						</td>
+					</tr>
+				</table>
 
-			</table>
+			</div>
 
 		</div>
 

@@ -7,39 +7,26 @@ import org.springframework.stereotype.Component;
 
 import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
-import com.webshop.webapp.entity.service.ProductService;
 
 @Component
-public class CartProductsAdder {
+public class CartProductsRemover {
 
 	@Autowired
 	HttpSession session;
-
-	@Autowired
-	ProductService productService;
-
-	public void add(int productId, int quantity) {
+	
+	public void remove(int productId) {
+		
 		Cart cart = (Cart) session.getAttribute("cart");
-		boolean contains = false;
 
 		for (CartProduct cp : cart.getCartProducts()) {
-
 			if (cp.getProduct().getId() == productId) {
-				cp.setQuantity(cp.getQuantity() + quantity);
-				contains = true;
+				cart.getCartProducts().remove(cp);
 				break;
 			}
-
-		}
-
-		if (contains == false) {
-			CartProduct cpNew = new CartProduct();
-			cpNew.setProduct(productService.getProductById(productId));
-			cpNew.setQuantity(quantity);
-			cart.getCartProducts().add(cpNew);
 		}
 
 		session.setAttribute("cart", cart);
+		
 	}
-
+	
 }

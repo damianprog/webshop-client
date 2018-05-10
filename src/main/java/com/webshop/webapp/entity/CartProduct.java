@@ -3,13 +3,15 @@ package com.webshop.webapp.entity;
 public class CartProduct {
 
 	private Product product;
-	
+
 	private int quantity;
-	
+
+	private double price;
+
 	public CartProduct() {
 		quantity = 1;
 	}
-	
+
 	public Product getProduct() {
 		return product;
 	}
@@ -25,7 +27,13 @@ public class CartProduct {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
-	
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 }

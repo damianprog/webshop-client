@@ -47,9 +47,9 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public byte[] resize(byte[] bookPicBytes, int width, int height) throws IOException {
+	public byte[] resize(byte[] productPicBytes, int width, int height) throws IOException {
 
-		return resizePhoto.resize(bookPicBytes, width, height);
+		return resizePhoto.resize(productPicBytes, width, height);
 	}
 
 }

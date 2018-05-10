@@ -9,6 +9,8 @@ public class Product {
 
 	private byte[] productPhoto;
 
+	private String encodedProductPhoto;
+
 	private String name;
 
 	private String brand;
@@ -22,9 +24,9 @@ public class Product {
 	private String category;
 
 	public Product() {
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -87,6 +89,14 @@ public class Product {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getEncodedProductPhoto() {
+		return encodedProductPhoto;
+	}
+
+	public void setEncodedProductPhoto(String encodedProductPhoto) {
+		this.encodedProductPhoto = encodedProductPhoto;
 	}
 
 	@Override

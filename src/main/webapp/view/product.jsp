@@ -1,4 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="true"%>
 
 <!DOCTYPE html>
@@ -76,10 +79,12 @@
 								</select>
 							</div> <input type="hidden" name="productId" value="${product.id}">
 
-
-							<input id="addToCart" type="submit" value="Add to cart" onclick="alertCart()">
-
-
+							<sec:authorize access="isFullyAuthenticated()">
+								<input id="addToCart" type="submit" value="Add to cart"
+									onclick="alertCart()">
+							</sec:authorize> <sec:authorize access="!isFullyAuthenticated()">
+								<input id="addToCart" type="submit" value="Add to cart">
+							</sec:authorize>
 
 						</td>
 					</tr>
@@ -112,7 +117,7 @@
 
 	<div class="rightSide">
 		<c:url var="sponsoredPage" value="/main/showProduct">
-			<c:param name="productName">${sponsored.name}</c:param>
+			<c:param name="productId">${sponsored.id}</c:param>
 		</c:url>
 
 

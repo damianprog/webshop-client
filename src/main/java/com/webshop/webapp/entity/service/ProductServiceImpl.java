@@ -1,6 +1,7 @@
 package com.webshop.webapp.entity.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.webshop.webapp.entity.Product;
@@ -27,6 +28,11 @@ public class ProductServiceImpl implements ProductService{
 
 		productWebservice.saveProduct(product);
 		
+	}
+
+	@Override
+	public Page<Product> getProductsByCategory(String category, int page) {
+		return productWebservice.getProductsByCategory(category,page);
 	}
 	
 	

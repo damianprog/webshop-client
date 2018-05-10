@@ -26,7 +26,7 @@
 
 <h2>Add Product</h2>
 		<hr />
-		<form:form action="saveProduct" modelAttribute="product" method="POST"
+		<form:form action="/main/saveProduct" modelAttribute="product" method="POST"
 			enctype="multipart/form-data">
 			<table>
 				<tr>
@@ -47,12 +47,27 @@
 				</tr>
 				
 				<tr>
+					<td class="addingName">Brand</td>
+				</tr>
+				<tr>
+					<td class="bottomTd"><form:input path="brand"
+							id="productNameBox" required="required" /></td>
+				</tr>
+				
+				<tr>
 					<td class="addingName">Category</td>
 				</tr>
 				
 				<tr>
-					<td class="bottomTd"><form:input path="category"
-							class="inputBox" required="required" /></td>
+					<td class="bottomTd"><form:select path="category"
+							class="inputBox" required="required">
+							<option value="Video Games">Video Games</option>
+							<option value="Headphones">Headphones</option>
+							<option value="Laptops">Laptops</option>
+							<option value="Phones">"Phones"</option>
+							<option value="Drones">Drones</option>
+							<option value="TV">TV</option>
+						</form:select></td>
 				</tr>
 				
 				<tr>

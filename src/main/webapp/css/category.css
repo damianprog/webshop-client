@@ -1,0 +1,61 @@
+body {
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Cabin', sans-serif;
+	font-size: 17px;
+	color: black;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#pageInfoHeader{
+	float:left;
+	margin-top: 30px;
+	margin-left: 15px;
+}
+
+#header {
+	margin-top: 30px;
+	float:left;
+}
+
+#productsTable {
+	margin-top: 30px;
+}
+
+#productTile {
+	margin-right:25px;
+	width: 215px;
+	float:left;
+}
+
+#boldGrey {
+	font-weight: bold;
+	color: #666;
+	float: left;
+}
+
+#sellerInfo {
+	margin-bottom: 10px;
+}
+
+#thinGrey {
+	color: #666;
+	float: left;
+}
+
+#productPhoto{
+	height:200px;
+}
+
+#productName{
+	height:40px;	
+}
+
+
+
+
+
+

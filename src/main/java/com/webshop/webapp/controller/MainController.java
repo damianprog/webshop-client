@@ -1,13 +1,13 @@
 package com.webshop.webapp.controller;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Arrays;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.webshop.webapp.entity.Product;
 import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.service.ProductServiceImpl;
+import com.webshop.webapp.utils.ProductsPhotosInitializer;
 import com.webshop.webapp.utils.service.PhotoService;
 import com.webshop.webapp.utils.service.SaveService;
 
@@ -37,6 +38,9 @@ public class MainController {
 	@Autowired
 	SaveService saveService;
 
+	@Autowired
+	ProductsPhotosInitializer productsPhotosInitializer;
+	
 	@GetMapping("/start")
 	public String start() {
 
@@ -44,9 +48,9 @@ public class MainController {
 	}
 
 	@GetMapping("/showProduct")
-	public String showProduct(Model theModel, @RequestParam("productName") String productName) throws IOException {
+	public String showProduct(Model theModel, @RequestParam("productId") int productId) throws IOException {
 
-		Product product = productService.getProductByName(productName);
+		Product product = productService.getProductById(productId);
 		Product sponsored = product;
 
 		theModel.addAttribute("productPhoto", photoService.getEncodedImage(product.getProductPhoto()));
@@ -95,6 +99,20 @@ public class MainController {
 		theModel.addAttribute("success", saveService.saveUser(user));
 
 		return "created";
+	}
+
+	@GetMapping("/showCategory")
+	public String showCategory(@RequestParam("category") String category, @RequestParam(defaultValue = "1") int page,
+			Model theModel) {
+
+		Page<Product> productsPage = productService.getProductsByCategory(category,page);
+		
+		theModel.addAttribute("products",productsPhotosInitializer.initialize(productsPage.getContent()));
+		theModel.addAttribute("productsPage",productsPage);
+		theModel.addAttribute("currentPage",page);
+		theModel.addAttribute("category",category);
+		
+		return "category";
 	}
 
 	@GetMapping("/accessDenied")

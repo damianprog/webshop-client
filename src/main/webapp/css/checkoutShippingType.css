@@ -1,0 +1,151 @@
+body {
+	background-image: url("img/white_wall_hash.png");
+	font-family: 'Cabin', sans-serif;
+	font-size: 17px;
+	color: black;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#leftSide {
+	width: 600px;
+	float: left;
+}
+
+#rightSide {
+	float: left;
+}
+
+#receipt {
+	background-color: white;
+	border-radius: 7px;
+	margin-top: 15px;
+	border-size: 0.5px;
+	border-style: solid;
+	border-width: thin;
+	border-color: #9b9b9b;
+}
+
+#priceInfoTable td {
+	padding-bottom: 10px;
+}
+
+#estTotal {
+	padding-top: 20px;
+}
+
+#estTotalRightTd {
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.rightTd {
+	padding-left: 20px;
+}
+
+#headerInfo {
+	margin-top: 20px;
+	font-size: 25px;
+}
+
+.shippingTypeBox {
+	margin-top: 30px;
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	border: 0.5px solid #9b9b9b;
+	text-align: center;
+	font-size: 22px;
+	display: table;
+	background-color: white;
+}
+
+.shippingTypeBoxContent {
+	display: table-cell;
+	font-size: 22px;
+	vertical-align: middle;
+}
+
+#productsPhotos {
+	width: 240px;
+	margin-top: 30px;
+}
+
+#productPhoto {
+	float: left;
+}
+
+.shippingType {
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	border: 0.5px solid #9b9b9b;
+	background-color: white;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+	display: table;
+}
+
+#arriveBy {
+	float: left;
+}
+
+#arriveByLabel {
+	float: left;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+#shippingTypeContentDate {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 10px;
+}
+
+#shippingTypeContentPriceInfo {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#continue {
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 380px;
+	align: center;
+	width: 200px;
+	height: 40px;
+	border-radius: 15px;
+	background-color: #0980d7;
+	color: white;
+	display: table;
+}
+
+#continueContent {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.unactiveLabel{
+	color:#999A9A;
+	font-size:23px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#firstHr{
+	height: 1px;
+	background-color: #e6e7e8;
+	border: none;
+	margin-top:45px;
+}
+
+hr {
+	height: 1px;
+	background-color: #e6e7e8;
+	border: none;
+}

@@ -21,7 +21,7 @@
 
 <body>
 
-	<table>
+	<table id="headerTable">
 		<tr>
 			<td>
 				<div id="logo">
@@ -42,8 +42,12 @@
 										style="vertical-align: middle;" src="/css/img/account.png">
 										${sessionScope.userSession.userName}
 								</a></td>
-								<td><img style="vertical-align: middle;"
-									src="/css/img/cart.png"> Cart</td>
+								<td>
+								<a href="/logged/showCart">
+								<img style="vertical-align: middle;"
+									src="/css/img/cart.png"> Cart
+								</a>	
+								</td>
 								<td><a style="text-decoration: none" href="/logout"> <img
 										style="vertical-align: middle;" src="/css/img/logout.png">Logout
 								</a></td>
