@@ -3,6 +3,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="true"%>
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/checkoutShippingType.css"
+<link rel="stylesheet" href="/css/checkoutShippingAddress.css"
 	type="text/css" />
 <link rel="stylesheet" href="/css/css/fontello.css" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster"
@@ -20,6 +21,9 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cabin"
 	rel="stylesheet">
+<script src="/css/js/jquery-3.3.1.min.js"></script>
+
+
 
 </head>
 
@@ -30,44 +34,83 @@
 		<jsp:include page="/view/header.jsp" />
 
 		<div id="leftSide">
+
+			<div class="unactiveLabel">
+				<img style="vertical-align: middle"
+					src="/css/img/number-one-in-a-circle-grey.png"> Shipping
+				Options
+			</div>
+
+			<div id="edit">
+				<a href="/logged/showCheckoutShippingType"> Edit </a>
+			</div>
+
+			<div style="clear: both"></div>
+
+			<hr>
+
+
 			<div id="headerInfo">
 				<img style="vertical-align: middle"
-					src="/css/img/number-one-in-a-circle.png"> Shipping Options
+					src="/css/img/number-two-in-a-circle.png"> Enter shipping
+				address
 			</div>
 
-			<div class="shippingTypeBox">
-				<div class="shippingTypeBoxContent">Shipping</div>
+			<div id="defaultAddressDiv">
+				<input id="defaultAddressCheckbox" type="checkbox"
+					name="defaultAddress"> Use my default Address
 			</div>
 
-			<div id="productsPhotos">
+			<form:form id="addressForm" action="/logged/addCustomAddressToOrder"
+				modelAttribute="userCustomAddress" method="POST">
 
-				<c:forEach var="tempProduct" items="${cartProducts}">
+				<table id="shippingAddressesTable">
+					<form:hidden path="id" />
+					<tr>
+						<td>First Name*<br /> <form:input path="firstName"
+								placeholder="First Name" class="inputBoxShippingAddresses"
+								required="required" />
+						</td>
 
-					<div id="productPhoto">
-						<img
-							src="data:img/jpeg;base64,${tempProduct.product.encodedProductPhoto}">
-					</div>
+						<td class="rightTd">Street Address*<br /> <form:input
+								path="street" placeholder="Street Address"
+								class="inputBoxShippingAddresses" required="required" />
+						</td>
+					</tr>
 
-				</c:forEach>
-			</div>
+					<tr>
+						<td>Last Name*<br /> <form:input path="lastName"
+								placeholder="Last Name" class="inputBoxShippingAddresses"
+								required="required" />
+						</td>
 
-			<div id="arriveBy">
-				<div id="arriveByLabel">Arrive by</div>
-				<div class="shippingType">
-					<div id="shippingTypeContentDate">${arrivesDate}</div>
-					<div id="shippingTypeContentPriceInfo">
-						<c:choose>
-							<c:when test="${overallPrice > 100}">
-							Free
-						</c:when>
-							<c:otherwise>
-							&dollar; 10
-						</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-			</div>
+						<td class="rightTd">City*<br /> <form:input path="city"
+								placeholder="City" class="inputBoxShippingAddresses"
+								required="required" />
+						</td>
+					</tr>
 
+					<tr>
+						<td>Phone*<br /> <form:input path="phone"
+								placeholder="Phone" class="inputBoxShippingAddresses"
+								required="required" />
+						</td>
+						<td class="rightTd">Country*<br /> <form:input
+								path="country" placeholder="Country"
+								class="inputBoxShippingAddresses" required="required" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Post-Code*<br /> <form:input path="postCode"
+								placeholder="Post-Code" class="inputBoxShippingAddresses"
+								required="required" />
+						</td>
+					</tr>
+				</table>
+
+				<input id="continueSubmit" type="submit" value="Continue" />
+			</form:form>
 		</div>
 
 		<div id="rightSide">
@@ -140,24 +183,38 @@
 
 		<div id="continue">
 			<div id="continueContent">Continue</div>
-			<a href="/logged/showCheckoutShippingAddress">
+			<a href="/logged/showCheckoutPaymentMethod">
 						<span class="link-spanner"></span>
 					</a>
 		</div>
-		
+
 		<hr id="firstHr">
 
 		<div class="unactiveLabel">
-			<img style="vertical-align:middle" src="/css/img/number-two-in-a-circle-grey.png"> Enter shipping address
+			<img style="vertical-align: middle"
+				src="/css/img/number-three-in-a-circle-grey.png"> Enter
+			payment method
 		</div>
 
-		<hr>
-
-		<div class="unactiveLabel">
-			<img style="vertical-align:middle" src="/css/img/number-three-in-a-circle-grey.png"> Enter payment method
-		</div>
 
 	</div>
 </body>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('#continue').hide();
+		
+		$('#defaultAddressCheckbox').change(function() {
+			if ($(this).prop("checked")) {
+				$('#addressForm').hide();
+				$('#continue').show();
+			} else {
+				$('#addressForm').show();
+				$('#continue').hide();
+			}
+		});
+	});
+</script>
 
 </html>

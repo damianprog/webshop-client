@@ -64,7 +64,7 @@
 							<option value="Video Games">Video Games</option>
 							<option value="Headphones">Headphones</option>
 							<option value="Laptops">Laptops</option>
-							<option value="Phones">"Phones"</option>
+							<option value="Phones">Phones</option>
 							<option value="Drones">Drones</option>
 							<option value="TV">TV</option>
 						</form:select></td>

@@ -1,5 +1,8 @@
 package com.webshop.webapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CartProduct {
 
 	private Product product;
@@ -7,6 +10,8 @@ public class CartProduct {
 	private int quantity;
 
 	private double price;
+
+	private Order order;
 
 	public CartProduct() {
 		quantity = 1;
@@ -34,6 +39,14 @@ public class CartProduct {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }

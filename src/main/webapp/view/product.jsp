@@ -58,7 +58,7 @@
 					<tr>
 						<td>Protect your device from drops &amp; spills with <b>Care
 								Plan</b> <br> <br> <input id="carePlan" type="checkbox"
-							name="carePlan"> Add <b>2-Year</b> Headphones Protection
+							name="carePlan"> Add <b>2-Year</b> Device Protection
 							<b>&dollar; 2.00</b>
 
 						</td>

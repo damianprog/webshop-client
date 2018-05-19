@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.UserDetails;
 import com.webshop.webapp.entity.UserRole;
@@ -23,15 +24,24 @@ public class UserServiceImpl implements UserService {
 
 		UserRole userRole = new UserRole();
 
+		UserDetails userDetails = new UserDetails();
+		
+		
 		user.setEnabled(false);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setUserDetails(new UserDetails());
+		user.setUserDetails(userDetails);
 		
 		if (isUserNameAvailable(user.getUserName())) {
 			userWebservice.saveUser(user);
 			User user2 = userWebservice.getUserByUserName(user.getUserName());
 			userRole.setUserId(user2.getId());
 			userRole.setRoleId(2);
+			
+			Address address = new Address();
+			
+			address.setId(user2.getId());
+			userDetails.setAddress(address);
+			userWebservice.saveUser(user2);
 			userWebservice.saveUserRole(userRole);
 			return true;
 		}

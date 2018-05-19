@@ -76,7 +76,10 @@
 
 			<c:if test="${!empty cartProducts}">
 				<div id="checkout">
-					<div id="checkoutContent"><a href="/logged/showCheckoutShippingType">Check Out</a></div>
+					<div id="checkoutContent">Check Out</div>
+					<a href="/logged/showCheckoutShippingType">
+						<span class="link-spanner"></span>
+					</a>
 				</div>
 			</c:if>
 

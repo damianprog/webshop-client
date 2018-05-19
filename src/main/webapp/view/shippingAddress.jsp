@@ -26,7 +26,7 @@
 		<jsp:include page='/view/header.jsp' />
 
 		<div id="pageInfoHeader">
-			<a class="blueHref" href="/profile/showAccount">Your Account</a> >
+			<a class="blueHref" href="/account/showAccount">Your Account</a> >
 			Shipping Addresses
 		</div>
 
@@ -43,42 +43,43 @@
 
 			<table id="shippingAddressesTable">
 				<form:hidden path="id" />
+				<form:hidden path="address.id" />
 				<tr>
-					<td>First Name*<br /> <form:input path="firstName"
+					<td>First Name*<br /> <form:input path="address.firstName"
 							placeholder="First Name" class="inputBoxShippingAddresses"
 							required="required" />
 					</td>
 
 					<td class="rightTd">Street Address*<br /> <form:input
-							path="street" placeholder="Street Address"
+							path="address.street" placeholder="Street Address"
 							class="inputBoxShippingAddresses" required="required" />
 					</td>
 				</tr>
 
 				<tr>
-					<td>Last Name*<br /> <form:input path="lastName"
+					<td>Last Name*<br /> <form:input path="address.lastName"
 							placeholder="Last Name" class="inputBoxShippingAddresses"
 							required="required" />
 					</td>
 
-					<td class="rightTd">City*<br /> <form:input path="city"
+					<td class="rightTd">City*<br /> <form:input path="address.city"
 							placeholder="City" class="inputBoxShippingAddresses"
 							required="required" />
 					</td>
 				</tr>
 
 				<tr>
-					<td>Phone*<br /> <form:input path="phone" placeholder="Phone"
+					<td>Phone*<br /> <form:input path="address.phone" placeholder="Phone"
 							class="inputBoxShippingAddresses" required="required" />
 					</td>
-					<td class="rightTd">Country*<br /> <form:input path="country"
+					<td class="rightTd">Country*<br /> <form:input path="address.country"
 							placeholder="Country" class="inputBoxShippingAddresses"
 							required="required" />
 					</td>
 				</tr>
 
 				<tr>
-					<td>Post-Code*<br /> <form:input path="postCode"
+					<td>Post-Code*<br /> <form:input path="address.postCode"
 							placeholder="Post-Code" class="inputBoxShippingAddresses"
 							required="required" />
 					</td>

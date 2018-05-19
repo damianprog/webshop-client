@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.UserRole;
 
@@ -48,5 +49,6 @@ public class UserWebserviceImpl implements UserWebservice {
 		restTemplate.postForObject(url + "/userRoles", userRole, UserRole.class);
 
 	}
+
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.UserDetails;
 import com.webshop.webapp.entity.service.UserService;
 import com.webshop.webapp.utils.service.SaveService;
@@ -27,7 +28,9 @@ public class AccountController {
 	@GetMapping("/showShippingAddress")
 	public String shippingAddressPage(Model theModel,Principal principal) {
 		
-		theModel.addAttribute("userDetails",userService.getUserByUserName(principal.getName()).getUserDetails());
+		User user = userService.getUserByUserName(principal.getName());
+		
+		theModel.addAttribute("userDetails",user.getUserDetails());
 		
 		return "shippingAddress";
 	}

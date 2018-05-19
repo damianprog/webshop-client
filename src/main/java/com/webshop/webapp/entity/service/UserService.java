@@ -1,7 +1,7 @@
 package com.webshop.webapp.entity.service;
 
+import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.User;
-import com.webshop.webapp.entity.UserDetails;
 
 public interface UserService {
 
@@ -14,5 +14,5 @@ public interface UserService {
 	public User getUserById(int userId);
 
 	public void updateUser(User user);
-	
+
 }

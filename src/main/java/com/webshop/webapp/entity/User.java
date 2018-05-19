@@ -1,7 +1,12 @@
 package com.webshop.webapp.entity;
 
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -27,6 +32,8 @@ public class User {
 	private Set<Role> roles;
 
 	private UserDetails userDetails;
+
+	private List<Order> orders;
 
 	public User() {
 
@@ -86,6 +93,14 @@ public class User {
 
 	public void setUserDetails(UserDetails userDetails) {
 		this.userDetails = userDetails;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 }
