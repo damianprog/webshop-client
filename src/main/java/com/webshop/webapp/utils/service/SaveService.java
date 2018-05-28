@@ -5,7 +5,7 @@ import com.webshop.webapp.entity.UserDetails;
 
 public interface SaveService {
 
-	public boolean saveUser(User user);
+	public void saveUser(User user);
 	
 	public void saveUserDetails(UserDetails userDetails,String userName);
 }

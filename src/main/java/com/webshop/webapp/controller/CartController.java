@@ -1,7 +1,6 @@
 package com.webshop.webapp.controller;
 
 import java.security.Principal;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -26,35 +25,27 @@ import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.service.OrderService;
 import com.webshop.webapp.entity.service.ProductService;
 import com.webshop.webapp.entity.service.UserService;
-import com.webshop.webapp.utils.ObjectGenerator;
-import com.webshop.webapp.utils.SessionOrderInstantiator;
 import com.webshop.webapp.utils.service.CartService;
-import com.webshop.webapp.utils.service.PhotoService;
+import com.webshop.webapp.utils.service.SessionOrderService;
 
 @Controller
-@RequestMapping("/logged")
-public class LoggedController {
+@RequestMapping("/cart")
+public class CartController {
 
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 
 	@Autowired
-	PhotoService photoService;
+	private CartService cartService;
 
 	@Autowired
-	CartService cartService;
+	private UserService userService;
 
 	@Autowired
-	UserService userService;
+	private OrderService orderService;
 
 	@Autowired
-	ObjectGenerator objectGenerator;
-
-	@Autowired
-	SessionOrderInstantiator sessionOrderInstantiator;
-
-	@Autowired
-	OrderService orderService;
+	private SessionOrderService sessionOrderService;
 
 	@GetMapping("/addToCart")
 	public String addToCart(Model theModel, HttpSession session, @RequestParam("productId") int productId,
@@ -89,7 +80,7 @@ public class LoggedController {
 
 		cartService.removeCartProduct(productId);
 
-		return "redirect:/logged/showCart";
+		return "redirect:/cart/showCart";
 
 	}
 
@@ -97,6 +88,8 @@ public class LoggedController {
 	public String showCheckoutShippingType(Model theModel, HttpSession session) {
 
 		Cart cart = (Cart) session.getAttribute("cart");
+
+		sessionOrderService.instantiateOrder();
 
 		theModel.addAttribute("cartProducts", cart.getCartProducts());
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
@@ -108,16 +101,12 @@ public class LoggedController {
 	}
 
 	@GetMapping("/showCheckoutShippingAddress")
-	public String showCheckoutShippingAddress(Model theModel, HttpSession session) {
+	public String showCheckoutShippingAddress(Model theModel, HttpSession session,
+			@RequestParam("deliveryType") String deliveryType) {
 
 		Cart cart = (Cart) session.getAttribute("cart");
 
-		Order order = new Order();
-		order.setCartProducts(cart.getCartProducts());
-		order.setDeliveryDate(Date.valueOf(LocalDate.now().plusDays(3)));
-		order.setOrderDate(Date.valueOf(LocalDate.now()));
-
-		session.setAttribute("order", order);
+		sessionOrderService.instantiateOrderDelivery(deliveryType);
 
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
 		theModel.addAttribute("overallPrice", cartService.countOverallCartProductsPrice());
@@ -150,12 +139,14 @@ public class LoggedController {
 			HttpSession session) {
 
 		Order order = (Order) session.getAttribute("order");
-		order.setAddress(address);
+		Address newAddress = orderService.saveAddressAndReturn(address);
+		order.setAddress(newAddress);
 
 		theModel.addAttribute("creditCard", new CreditCard());
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
 		theModel.addAttribute("overallPrice", cartService.countOverallCartProductsPrice());
 		theModel.addAttribute("cartProducts", order.getCartProducts());
+		theModel.addAttribute("address", order.getAddress());
 
 		return "checkoutPaymentMethod";
 	}
@@ -163,15 +154,17 @@ public class LoggedController {
 	@PostMapping("/saveOrder")
 	public String saveOrder(@ModelAttribute("creditCard") CreditCard creditCard,
 			@RequestParam Map<String, String> billingAddressMap,
-			@RequestParam(value = "billingCheckbox", required = false) boolean isItCustomAddress, HttpSession session,
+			@RequestParam(value = "defaultAddress", required = false) boolean isItDefaultBillingAddress,
+			@RequestParam(value = "isItDefaultCreditCard", required = false) boolean isItDefaultCreditCard, HttpSession session,
 			Principal principal) {
 
 		Order order = (Order) session.getAttribute("order");
-		
-		OrderDetails orderDetails = new OrderDetails(isItCustomAddress,billingAddressMap,creditCard);
-		
-		sessionOrderInstantiator.instantiate(orderDetails);
-		
+
+		OrderDetails orderDetails = new OrderDetails(isItDefaultBillingAddress, isItDefaultCreditCard, billingAddressMap,
+				creditCard);
+
+		sessionOrderService.instantiateOrderDetails(orderDetails);
+
 		orderService.saveOrder(order);
 
 		return "main";

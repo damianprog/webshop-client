@@ -38,9 +38,9 @@ public class UserWebserviceImpl implements UserWebservice {
 	}
 
 	@Override
-	public void saveUser(User user) {
+	public User saveUser(User user) {
 
-		restTemplate.put(url + "/users", user);
+		return restTemplate.postForObject(url + "/users", user,User.class);
 	}
 
 	@Override
@@ -48,6 +48,13 @@ public class UserWebserviceImpl implements UserWebservice {
 
 		restTemplate.postForObject(url + "/userRoles", userRole, UserRole.class);
 
+	}
+
+	@Override
+	public void updateUser(User user) {
+
+		restTemplate.put(url + "/users",user);
+		
 	}
 
 

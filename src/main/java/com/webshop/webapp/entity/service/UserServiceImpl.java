@@ -20,37 +20,33 @@ public class UserServiceImpl implements UserService {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
-	public boolean saveUser(User user) {
-
-		UserRole userRole = new UserRole();
-
-		UserDetails userDetails = new UserDetails();
+	public void saveUser(User user) {
 		
-		
-		user.setEnabled(false);
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setUserDetails(userDetails);
-		
-		if (isUserNameAvailable(user.getUserName())) {
-			userWebservice.saveUser(user);
-			User user2 = userWebservice.getUserByUserName(user.getUserName());
-			userRole.setUserId(user2.getId());
-			userRole.setRoleId(2);
-			
-			Address address = new Address();
-			
-			address.setId(user2.getId());
-			userDetails.setAddress(address);
-			userWebservice.saveUser(user2);
-			userWebservice.saveUserRole(userRole);
-			return true;
-		}
+		user = setBasicUserValues(user);
 
-		return false;
+		user = userWebservice.saveUser(user);
+		grantUserRoleAndSave(user);
+
 	}
 
-	
-	
+	private void grantUserRoleAndSave(User user) {
+		
+		UserRole userRole = new UserRole();
+		
+		userRole.setUserId(user.getId());
+		userRole.setRoleId(2);
+
+		userWebservice.saveUser(user);
+		userWebservice.saveUserRole(userRole);
+	}
+
+	private User setBasicUserValues(User user) {
+		user.setEnabled(false);
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+		return user;
+	}
+
 	@Override
 	public boolean isUserNameAvailable(String userName) {
 
@@ -72,13 +68,11 @@ public class UserServiceImpl implements UserService {
 		return userWebservice.getUserById(userId);
 	}
 
-
-
 	@Override
 	public void updateUser(User user) {
-	
-		userWebservice.saveUser(user);
-		
+
+		userWebservice.updateUser(user);
+
 	}
-	
+
 }

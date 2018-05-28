@@ -24,10 +24,10 @@
 
 		<jsp:include page='/view/header.jsp' />
 
-<h2>Add Product</h2>
+		<h2>Add Product</h2>
 		<hr />
-		<form:form action="/main/saveProduct" modelAttribute="product" method="POST"
-			enctype="multipart/form-data">
+		<form:form action="/admin/saveProduct" modelAttribute="product"
+			method="POST" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td class="addingName">Product Photo (JPG extension, please)</td>
@@ -36,8 +36,8 @@
 					<td class="bottomTd"><input type="file" name="photo"
 						class="inputBox" required="required" /></td>
 				</tr>
-				
-				
+
+
 				<tr>
 					<td class="addingName">Product Name</td>
 				</tr>
@@ -45,7 +45,7 @@
 					<td class="bottomTd"><form:input path="name"
 							id="productNameBox" required="required" /></td>
 				</tr>
-				
+
 				<tr>
 					<td class="addingName">Brand</td>
 				</tr>
@@ -53,11 +53,11 @@
 					<td class="bottomTd"><form:input path="brand"
 							id="productNameBox" required="required" /></td>
 				</tr>
-				
+
 				<tr>
 					<td class="addingName">Category</td>
 				</tr>
-				
+
 				<tr>
 					<td class="bottomTd"><form:select path="category"
 							class="inputBox" required="required">
@@ -69,23 +69,24 @@
 							<option value="TV">TV</option>
 						</form:select></td>
 				</tr>
-				
+
 				<tr>
 					<td class="addingName">Price</td>
 				</tr>
 				<tr>
-					<td class="bottomTd"><form:input path="price"
-							class="inputBox" required="required" /></td>
+					<td class="bottomTd"><form:input path="price" class="inputBox"
+							required="required" /></td>
 				</tr>
-				
+
 				<tr>
-					<td class="addingName">Highlights (Add ";" sign, after every highlight)</td>
+					<td class="addingName">Highlights (Add ";" sign, after every
+						highlight)</td>
 				</tr>
 				<tr>
 					<td class="bottomTd"><form:textarea path="highlights"
-							class="highlightsArea" required="required" /></td>
+							class="reviewArea" required="required"/></td>
 				</tr>
-				
+
 				<tr>
 					<td class="addingName">Description</td>
 				</tr>
@@ -93,7 +94,7 @@
 					<td class="bottomTd"><form:textarea path="description"
 							class="descriptionArea" required="required" /></td>
 				</tr>
-				
+
 			</table>
 			<input id="submit" type="submit" value="Create" />
 		</form:form>

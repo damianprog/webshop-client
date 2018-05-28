@@ -9,24 +9,21 @@ import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
 
 @Component
-public class CartProductsRemover {
+public class SessionCartProductsCounter {
 
 	@Autowired
 	HttpSession session;
-	
-	public void remove(int productId) {
-		
+
+	public int count() {
+
 		Cart cart = (Cart) session.getAttribute("cart");
-
-		for (CartProduct cp : cart.getCartProducts()) {
-			if (cp.getProduct().getId() == productId) {
-				cart.getCartProducts().remove(cp);
-				break;
-			}
-		}
-
-		session.setAttribute("cart", cart);
 		
+		int quantity = 0;
+
+		for (CartProduct cp : cart.getCartProducts())
+			quantity += cp.getQuantity();
+
+		return quantity;
 	}
-	
+
 }

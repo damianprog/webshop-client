@@ -43,7 +43,7 @@
 										${sessionScope.userSession.userName}
 								</a></td>
 								<td>
-								<a href="/logged/showCart">
+								<a href="/cart/showCart">
 								<img style="vertical-align: middle;"
 									src="/css/img/cart.png"> Cart
 								</a>	

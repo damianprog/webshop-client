@@ -1,0 +1,50 @@
+body
+{
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Roboto', sans-serif;
+	font-size:17px;
+	color:black;
+}
+
+#container{
+	width:1000px;
+	margin: 0 auto;
+}
+
+#creditCardsListContent{
+	float:left;
+	margin-left:100px;
+}
+
+#creditCardsList{
+	margin-top:20px;
+}
+
+#masterCardLogo{
+	float:left;
+}
+
+#securityCode{
+	margin-top:18px;
+}
+
+#details{
+	margin-left:20px;
+	float:left;
+}
+
+#edit{
+}
+
+#remove{
+	margin-top:40px;
+}
+
+#editAndRemove{
+	float:left;
+	margin-left:70px;
+}
+
+#creditCard{
+	margin-top:20px;
+}

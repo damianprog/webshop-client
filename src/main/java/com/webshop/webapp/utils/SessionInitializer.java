@@ -17,6 +17,7 @@ public class SessionInitializer {
 	public void initialize(User user) {
 		
 		session.setAttribute("userSession", user);
+		session.setAttribute("userId", user.getId());
 		session.setAttribute("cart", new Cart());
 		session.setAttribute("userName", user.getUserName());
 		

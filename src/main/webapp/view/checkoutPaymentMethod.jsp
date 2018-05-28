@@ -29,7 +29,7 @@
 	<div id="container">
 
 		<jsp:include page="/view/header.jsp" />
-<form:form id="creditCardForm" action="/logged/saveOrder"
+<form:form id="creditCardForm" action="/cart/saveOrder"
 					modelAttribute="creditCard" method="POST">
 
 			<div id="unactiveLabels">
@@ -40,7 +40,7 @@
 			</div>
 
 			<div id="editShippingType">
-				<a href="/logged/showCheckoutShippingType"> Edit </a>
+				<a href="/cart/showCheckoutShippingType"> Edit </a>
 			</div>
 
 			<div style="clear: both"></div>
@@ -53,7 +53,7 @@
 			</div>
 
 			<div id="editShippingAddress">
-				<a href="/logged/showCheckoutShippingAddress"> Edit </a>
+				<a href="/cart/showCheckoutShippingAddress"> Edit </a>
 			</div>
 			<div style="clear: both"></div>
 			
@@ -131,7 +131,7 @@
 
 				<div id="cardLabel">Card information</div>
 
-				
+				<input name="isItDefaultCreditCard" type="checkbox">Set as default credit card			
 
 					<table id="shippingAddressesTable">
 						<form:hidden path="id" />
@@ -238,13 +238,13 @@
 					<tr>
 						<td>Street Address*<br /> <input name="street"
 							placeholder="Street Address" class="inputBoxShippingAddresses"
-							required="required" />
+							 />
 						</td>
 					</tr>
 
 					<tr>
 						<td>City*<br /> <input name="city" placeholder="City"
-							class="inputBoxShippingAddresses" required="required" />
+							class="inputBoxShippingAddresses" />
 						</td>
 					</tr>
 
@@ -253,12 +253,12 @@
 
 							<div id="country">
 								Country* <br /> <input name="country" placeholder="Country"
-									class="inputBoxShippingAddressesSmaller" required="required" />
+									class="inputBoxShippingAddressesSmaller" />
 							</div>
 							
 							<div id="postCode">
 								Post Code* <br /> <input name="postCode" placeholder="Post Code"
-									class="inputBoxShippingAddressesSmaller" required="required" />
+									class="inputBoxShippingAddressesSmaller"/>
 							</div>
 							
 						</td>

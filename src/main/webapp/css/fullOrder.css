@@ -1,0 +1,156 @@
+body {
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	color: black;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#infoLabel {
+	margin-bottom: 30px;
+}
+
+.sideTable {
+	margin-left: 15px;
+	font-size: 15px;
+	color: #0074b8;
+}
+
+#cartProduct {
+	margin-bottom: 30px;
+}
+
+#cartProductPhoto {
+	float: left;
+}
+
+#cartProductTable {
+	float: left;
+}
+
+#soldByTd {
+	padding-top: 20px;
+}
+
+#priceAndQuantity {
+	margin-left: 80px;
+	float: left;
+}
+
+#price {
+	margin-top: 23px;
+}
+
+#contentTable {
+	margin-left: 15px;
+	font-size: 20px;
+}
+
+#cartProductTable {
+	width: 300px;
+}
+
+#contentTable td {
+	padding-bottom: 20px;
+}
+
+.sideTable td {
+	padding-bottom: 20px;
+}
+
+#sideTablesDiv {
+	float: left;
+}
+
+#contentDiv {
+	float: left;
+	margin-left: 100px;
+	width:703px;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 700px;
+}
+
+.icon {
+	vertical-align: middle;
+	padding-right: 15px;
+}
+
+.blueHref {
+	text-decoration: none;
+	color: #0074b8;
+}
+
+.aAccountContent {
+	text-decoration: none;
+	color: black;
+}
+
+#delivery {
+	font-size: 21px;
+	float: left;
+}
+
+#deliveryCosts {
+	float: left;
+	font-size: 21px;
+	margin-left:260px;
+}
+
+#deliveryCost {
+	font-size: 21px;
+}
+
+#priceWithDelivery {
+	font-size: 21px;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+#deliveryLabels {
+	float: left;
+	font-size: 21px;
+	width:225px;
+}
+
+#priceWithDeliveryLabel{
+	margin-top:15px;
+}
+
+#address{
+	float:left;
+}
+
+#phoneNumber{
+	float:left;
+	margin-left:100px;
+}
+
+.greyHeader{
+	color:#666;
+}
+
+#creditCardLabels{
+	margin-top:5px;
+}
+
+#paymentMethodDiv{
+	float:left;
+}
+
+#paymentCompletedDiv{
+	float:left;
+	margin-left:80px;
+}
+
+#paymentAmountDiv{
+	float:left;
+	margin-left:90px;
+}

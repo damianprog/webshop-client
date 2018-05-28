@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.CreditCard;
 import com.webshop.webapp.entity.Order;
 
@@ -53,8 +54,13 @@ public class OrderWebserviceImpl implements OrderWebservice {
 
 	@Override
 	public void saveCreditCard(CreditCard creditCard) {
-		restTemplate.postForObject(url + "/orders/creditCards", creditCard,CreditCard.class);
+		restTemplate.postForObject(url + "/creditCards", creditCard,CreditCard.class);
 		
+	}
+
+	@Override
+	public Address saveAddressAndReturn(Address address) {
+		return restTemplate.postForObject(url + "/addresses", address,Address.class);
 	}
 
 }

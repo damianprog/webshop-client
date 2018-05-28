@@ -1,0 +1,36 @@
+
+body
+{
+	background-image: url("img/gaming-pattern.png");
+	font-family: 'Cabin', sans-serif;
+	font-size:17px;
+	color:black;
+}
+
+
+#infoLabel{
+	margin-bottom:30px;
+}
+
+.sideTable{
+	
+	margin-left:15px;
+	font-size:15px;
+	color:#0074b8;
+	
+}
+
+.sideTable td{
+	
+	padding-bottom:20px;
+	
+}
+
+#sideTablesDiv{
+	float:left;
+}
+
+.blueHref{
+	text-decoration:none;
+	color:#0074b8;
+}

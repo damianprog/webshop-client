@@ -20,6 +20,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cabin"
 	rel="stylesheet">
+<script src="/css/js/jquery-3.3.1.min.js"></script>
 
 </head>
 
@@ -35,10 +36,15 @@
 					src="/css/img/number-one-in-a-circle.png"> Shipping Options
 			</div>
 
-			<div class="shippingTypeBox">
-				<div class="shippingTypeBoxContent">Shipping</div>
+		<form id="deliveryTypeForm" method="get" action="showCheckoutShippingAddress">
+			<div class="deliveryTypeBox">
+				<div class="deliveryTypeBoxContent"><input type="radio" name="deliveryType" value="Two-day shipping" checked="checked"> Two-day shipping</div>
 			</div>
-
+			
+			<div class="deliveryTypeBox">
+				<div class="deliveryTypeBoxContent"><input type="radio" name="deliveryType" value="Free pickup"> Free pickup</div>
+			</div>
+		</form>
 			<div id="productsPhotos">
 
 				<c:forEach var="tempProduct" items="${cartProducts}">
@@ -53,17 +59,10 @@
 
 			<div id="arriveBy">
 				<div id="arriveByLabel">Arrive by</div>
-				<div class="shippingType">
-					<div id="shippingTypeContentDate">${arrivesDate}</div>
-					<div id="shippingTypeContentPriceInfo">
-						<c:choose>
-							<c:when test="${overallPrice > 100}">
-							Free
-						</c:when>
-							<c:otherwise>
-							&dollar; 10
-						</c:otherwise>
-						</c:choose>
+				<div class="deliveryTypeInfoBox">
+					<div id="deliveryTypeContentDate">${arrivesDate}</div>
+					<div id="deliveryTypeContentPriceInfo">
+						
 					</div>
 				</div>
 			</div>
@@ -86,28 +85,12 @@
 					<tr>
 						<td>SHIPPING</td>
 
-						<td class="rightTd"><c:choose>
-								<c:when test="${overallPrice>100}">
-					FREE
-					</c:when>
-								<c:otherwise>
-						&dollar; 10
-					</c:otherwise>
-							</c:choose></td>
+						<td id="shippingRightTd"></td>
 					</tr>
 					<tr>
 						<td id="estTotal">EST.TOTAL</td>
 
-						<td id="estTotalRightTd"><c:choose>
-								<c:when test="${overallPrice>100}">
-					&dollar; <fmt:formatNumber type="number" maxFractionDigits="2"
-										value="${overallPrice}" />
-								</c:when>
-								<c:otherwise>
-						&dollar; <fmt:formatNumber type="number" maxFractionDigits="2"
-										value="${overallPrice + 10}" />
-								</c:otherwise>
-							</c:choose></td>
+						<td id="estTotalRightTd"></td>
 					</tr>
 
 					<c:forEach var="tempProduct" items="${cartProducts}">
@@ -138,26 +121,71 @@
 
 		<div style="clear: both"></div>
 
-		<div id="continue">
-			<div id="continueContent">Continue</div>
-			<a href="/logged/showCheckoutShippingAddress">
-						<span class="link-spanner"></span>
-					</a>
-		</div>
-		
+<!-- 		<div id="continue"> -->
+<!-- 			<div id="continueContent">Continue</div> -->
+<!-- 			<a href="/cart/showCheckoutShippingAddress"> <span -->
+<!-- 				class="link-spanner"></span> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
+
+		<input id="continue" type="submit" form="deliveryTypeForm" value="Continue"/>
+
 		<hr id="firstHr">
 
 		<div class="unactiveLabel">
-			<img style="vertical-align:middle" src="/css/img/number-two-in-a-circle-grey.png"> Enter shipping address
+			<img style="vertical-align: middle"
+				src="/css/img/number-two-in-a-circle-grey.png"> Enter shipping
+			address
 		</div>
 
 		<hr>
 
 		<div class="unactiveLabel">
-			<img style="vertical-align:middle" src="/css/img/number-three-in-a-circle-grey.png"> Enter payment method
+			<img style="vertical-align: middle"
+				src="/css/img/number-three-in-a-circle-grey.png"> Enter
+			payment method
 		</div>
+
+		<div id="test"></div>
 
 	</div>
 </body>
+
+<script type="text/javascript">
+	
+$(document).ready(function() {
+	
+	var price = ${overallPrice};
+	
+	if(price<100)
+		payOption();
+	else
+		freeOption();
+	
+	function payOption(){
+		$('#deliveryTypeContentPriceInfo').text('$10');
+		$('#shippingRightTd').text('$10');
+		$('#estTotalRightTd').text('$' + (price + 10));
+	};
+	
+	function freeOption(){
+		$('#deliveryTypeContentPriceInfo').text('FREE');
+		$('#shippingRightTd').text('FREE');
+		$('#estTotalRightTd').text('$' + price);
+	};
+	
+	$('input[name=deliveryType]').change(function(){
+		var value = $( 'input[name=deliveryType]:checked' ).val();
+		
+		if((value == "Two-day shipping") && (price<100))
+			payOption()
+		else
+			freeOption();
+		
+		});
+	
+});
+	
+</script>
 
 </html>

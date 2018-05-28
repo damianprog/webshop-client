@@ -32,7 +32,7 @@
 
 		<div id="inputsContainer">
 
-			<form:form action="saveUser" modelAttribute="user" method="POST">
+			<form:form action="showRegisterShippingAddress" modelAttribute="user" method="POST">
 
 				<table id="inputsTable">
 					<tr>
@@ -75,7 +75,7 @@
 				<div id="terms">By clicking Create Account, you acknowledge
 							you have read and agreed to our Terms of Use and Privacy Policy.</div>
 							
-				<input id="signUp" type="submit" value="Create Account"/>
+				<input id="signUp" type="submit" value="Next"/>
 
 			</form:form>
 		</div>

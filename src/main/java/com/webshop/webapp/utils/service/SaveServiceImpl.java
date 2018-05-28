@@ -14,9 +14,9 @@ public class SaveServiceImpl implements SaveService {
 	UserService userService;
 
 	@Override
-	public boolean saveUser(User user) {
+	public void saveUser(User user) {
 
-		return userService.saveUser(user);
+		userService.saveUser(user);
 
 	}
 

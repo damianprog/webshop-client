@@ -21,7 +21,11 @@ public class CreditCard {
 
 	private String phoneNumber;
 
-	private Address billingAddress;
+	private Address address;
+
+	private User user;
+
+	private boolean isItDefault;
 
 	public int getId() {
 		return id;
@@ -88,11 +92,27 @@ public class CreditCard {
 	}
 
 	public Address getAddress() {
-		return billingAddress;
+		return address;
 	}
 
 	public void setAddress(Address address) {
-		this.billingAddress = address;
+		this.address = address;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public boolean isItDefault() {
+		return isItDefault;
+	}
+
+	public void setItDefault(boolean isItDefault) {
+		this.isItDefault = isItDefault;
 	}
 
 }

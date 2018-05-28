@@ -10,7 +10,9 @@ public interface UserWebservice {
 
 	public User getUserById(int userId);
 
-	public void saveUser(User user);
+	public User saveUser(User user);
+	
+	public void updateUser(User user);
 
 	public void saveUserRole(UserRole userRole);
 

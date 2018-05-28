@@ -46,13 +46,18 @@ body {
 	padding-left: 20px;
 }
 
+#shippingRightTd{
+	padding-left: 20px;
+}
+
 #headerInfo {
 	margin-top: 20px;
 	font-size: 25px;
 }
 
-.shippingTypeBox {
+.deliveryTypeBox {
 	margin-top: 30px;
+	margin-right: 30px;
 	width: 250px;
 	height: 40px;
 	border-radius: 3px;
@@ -61,9 +66,11 @@ body {
 	font-size: 22px;
 	display: table;
 	background-color: white;
+	float:left;
 }
 
-.shippingTypeBoxContent {
+
+.deliveryTypeBoxContent {
 	display: table-cell;
 	font-size: 22px;
 	vertical-align: middle;
@@ -71,14 +78,14 @@ body {
 
 #productsPhotos {
 	width: 240px;
-	margin-top: 30px;
+	margin-top: 100px;
 }
 
 #productPhoto {
 	float: left;
 }
 
-.shippingType {
+.deliveryTypeInfoBox {
 	width: 250px;
 	height: 40px;
 	border-radius: 3px;
@@ -101,13 +108,13 @@ body {
 	margin-top: 30px;
 }
 
-#shippingTypeContentDate {
+#deliveryTypeContentDate {
 	display: table-cell;
 	vertical-align: middle;
 	padding-left: 10px;
 }
 
-#shippingTypeContentPriceInfo {
+#deliveryTypeContentPriceInfo {
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -122,7 +129,7 @@ body {
 	border-radius: 15px;
 	background-color: #0980d7;
 	color: white;
-	display: table;
+	font-size:17px;
 	position: relative;
 }
 

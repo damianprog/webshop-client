@@ -5,7 +5,7 @@ import com.webshop.webapp.entity.User;
 
 public interface UserService {
 
-	public boolean saveUser(User user);
+	public void saveUser(User user);
 
 	public boolean isUserNameAvailable(String userName);
 

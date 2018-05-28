@@ -1,13 +1,11 @@
 package com.webshop.webapp.utils;
 
 import java.io.IOException;
-
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
 import com.webshop.webapp.entity.Product;
 import com.webshop.webapp.utils.service.PhotoService;
@@ -17,28 +15,32 @@ public class CartProductsPhotosInitializer {
 
 	@Autowired
 	PhotoService photoService;
-
-	@Autowired
-	HttpSession session;
-
-	public void initialize() {
-
-		Cart cart = (Cart) session.getAttribute("cart");
-
-		for (CartProduct cp : cart.getCartProducts()) {
+	
+	public List<CartProduct> initialize(List<CartProduct> cartProducts,int width,int height) {
+		
+		for (CartProduct cp : cartProducts) {
 
 			Product product = cp.getProduct();
 
-			String encodedResizedPhoto = null;
-			try {
-				encodedResizedPhoto = photoService
-						.getEncodedImage(photoService.resize(product.getProductPhoto(), 100, 100));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			String encodedResizedPhoto = encodeAndResize(product,width,height);
 			product.setEncodedProductPhoto(encodedResizedPhoto);
 		}
 
+		return cartProducts;
+		
 	}
 
+	private String encodeAndResize(Product product,int width,int height) {
+		
+		String encodedResizedPhoto = null;
+		
+		try {
+			encodedResizedPhoto = photoService
+					.getEncodedImage(photoService.resize(product.getProductPhoto(), width, height));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return encodedResizedPhoto;
+	}
+	
 }

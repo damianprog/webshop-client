@@ -32,6 +32,19 @@ body
 	
 }
 
+#ordersTable td{
+	padding-right:50px;
+	padding-bottom:15px;
+}
+
+#ordersTable td:last-child{
+	padding-right:0px;
+}
+
+#ordersTable th{
+	text-align:left;
+	padding-bottom:10px;
+}
 
 #contentTable td{
 	
@@ -52,7 +65,6 @@ body
 #contentDiv{
 	float:left;
 	margin-left:100px;
-	width:
 }
 
 hr{

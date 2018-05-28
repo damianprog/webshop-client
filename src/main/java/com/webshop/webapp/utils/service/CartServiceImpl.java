@@ -3,29 +3,29 @@ package com.webshop.webapp.utils.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webshop.webapp.utils.CartProductsAdder;
-import com.webshop.webapp.utils.CartProductsCounter;
-import com.webshop.webapp.utils.CartProductsPhotosInitializer;
-import com.webshop.webapp.utils.CartProductsPriceCounter;
-import com.webshop.webapp.utils.CartProductsRemover;
+import com.webshop.webapp.utils.SessionCartProductsAdder;
+import com.webshop.webapp.utils.SessionCartProductsCounter;
+import com.webshop.webapp.utils.SessionCartProductsPhotosInitializer;
+import com.webshop.webapp.utils.SessionCartProductsPriceCounter;
+import com.webshop.webapp.utils.SessionCartProductsRemover;
 
 @Service
 public class CartServiceImpl implements CartService{
 
 	@Autowired
-	CartProductsAdder adder;
+	SessionCartProductsAdder adder;
 
 	@Autowired
-	CartProductsCounter counter;
+	SessionCartProductsCounter counter;
 
 	@Autowired
-	CartProductsPhotosInitializer photosInitializer;
+	SessionCartProductsPhotosInitializer photosInitializer;
 
 	@Autowired
-	CartProductsPriceCounter priceCounter;
+	SessionCartProductsPriceCounter priceCounter;
 	
 	@Autowired
-	CartProductsRemover remover;
+	SessionCartProductsRemover remover;
 	
 	@Override
 	public void addCartProduct(int productId, int quantity) {
@@ -49,7 +49,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public double countOverallCartProductsPrice() {
-		return priceCounter.countOverallPrice();
+		return priceCounter.countOverallValue();
 	}
 
 	@Override

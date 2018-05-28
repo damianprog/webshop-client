@@ -10,7 +10,7 @@ import com.webshop.webapp.entity.CartProduct;
 import com.webshop.webapp.entity.service.ProductService;
 
 @Component
-public class CartProductsAdder {
+public class SessionCartProductsAdder {
 
 	@Autowired
 	HttpSession session;

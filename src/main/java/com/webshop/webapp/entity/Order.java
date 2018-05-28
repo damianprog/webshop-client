@@ -16,11 +16,13 @@ public class Order {
 
 	private User user;
 
-	private Date orderDate;
-
-	private Date deliveryDate;
+	private String orderDate;
 
 	private CreditCard creditCard;
+
+	private double overallValue;
+
+	private Delivery delivery;
 
 	public Order() {
 
@@ -50,20 +52,12 @@ public class Order {
 		this.cartProducts = cartProducts;
 	}
 
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
-	}
-
-	public Date getDeliveryDate() {
-		return deliveryDate;
-	}
-
-	public void setDeliveryDate(Date deliveryDate) {
-		this.deliveryDate = deliveryDate;
 	}
 
 	public CreditCard getCreditCard() {
@@ -82,10 +76,27 @@ public class Order {
 		this.user = user;
 	}
 
+	public double getOverallValue() {
+		return overallValue;
+	}
+
+	public void setOverallValue(double overallValue) {
+		this.overallValue = overallValue;
+	}
+
+	public Delivery getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", address=" + address + ", cartProducts=" + cartProducts + ", user=" + user
-				+ ", orderDate=" + orderDate + ", deliveryDate=" + deliveryDate + ", creditCard=" + creditCard + "]";
+				+ ", orderDate=" + orderDate + ", creditCard=" + creditCard + ", overallValue=" + overallValue
+				+ ", delivery=" + delivery + "]";
 	}
 
 }

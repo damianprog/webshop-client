@@ -13,7 +13,7 @@ import com.webshop.webapp.entity.UserDetails;
 import com.webshop.webapp.entity.service.UserService;
 
 @Component
-public class ObjectGenerator {
+public class CustomBillingAddressGenerator {
 
 	@Autowired
 	HttpSession session;
@@ -21,16 +21,16 @@ public class ObjectGenerator {
 	@Autowired
 	UserService userService;
 
-	public Address generateCustomBillingAddressForLoggedUser(Map<String, String> params) {
+	public Address generate(Map<String, String> params) {
 
 		User user = userService.getUserByUserName((String) session.getAttribute("userName"));
 		UserDetails userDetails = user.getUserDetails();
 
 		Address billingAddress = new Address();
 
-		billingAddress.setFirstName(userDetails.getFirstName());
-		billingAddress.setLastName(userDetails.getLastName());
-		billingAddress.setPhone(userDetails.getPhone());
+		billingAddress.setFirstName(userDetails.getAddress().getFirstName());
+		billingAddress.setLastName(userDetails.getAddress().getLastName());
+		billingAddress.setPhone(userDetails.getAddress().getPhone());
 
 		billingAddress.setStreet(params.get("street"));
 		billingAddress.setCity(params.get("city"));

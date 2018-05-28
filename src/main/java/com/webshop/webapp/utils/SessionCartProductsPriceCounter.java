@@ -11,7 +11,7 @@ import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
 
 @Component
-public class CartProductsPriceCounter {
+public class SessionCartProductsPriceCounter {
 
 	@Autowired
 	HttpSession session;
@@ -25,10 +25,13 @@ public class CartProductsPriceCounter {
 
 	}
 
-	public double countOverallPrice() {
+	public double countOverallValue() {
 
 		Cart cart = (Cart) session.getAttribute("cart");
-
+		
+		if(cart.getCartProducts().isEmpty())
+			return 0;
+		
 		double price = 0;
 
 		for (CartProduct cp : cart.getCartProducts()) {

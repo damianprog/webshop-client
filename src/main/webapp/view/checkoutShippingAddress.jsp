@@ -42,7 +42,7 @@
 			</div>
 
 			<div id="edit">
-				<a href="/logged/showCheckoutShippingType"> Edit </a>
+				<a href="/cart/showCheckoutShippingType"> Edit </a>
 			</div>
 
 			<div style="clear: both"></div>
@@ -61,7 +61,7 @@
 					name="defaultAddress"> Use my default Address
 			</div>
 
-			<form:form id="addressForm" action="/logged/addCustomAddressToOrder"
+			<form:form id="addressForm" action="/cart/addCustomAddressToOrder"
 				modelAttribute="userCustomAddress" method="POST">
 
 				<table id="shippingAddressesTable">
@@ -183,7 +183,7 @@
 
 		<div id="continue">
 			<div id="continueContent">Continue</div>
-			<a href="/logged/showCheckoutPaymentMethod">
+			<a href="/cart/showCheckoutPaymentMethod">
 						<span class="link-spanner"></span>
 					</a>
 		</div>

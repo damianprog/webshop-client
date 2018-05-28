@@ -9,14 +9,14 @@ public class Rating {
 
 	private int rate;
 
-	private int productId;
+	private Product product;
 
-	private int userId;
+	private User user;
 
 	public Rating() {
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -33,25 +33,25 @@ public class Rating {
 		this.rate = rate;
 	}
 
-	public int getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "Rating [id=" + id + ", rate=" + rate + ", productId=" + productId + ", userId=" + userId + "]";
+		return "Rating [id=" + id + ", rate=" + rate + ", product=" + product + ", user=" + user + "]";
 	}
 
 }

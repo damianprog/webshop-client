@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.webshop.webapp.entity.Product;
-import com.webshop.webapp.utils.HelperPage;
+import com.webshop.webapp.utils.HelperProductPage;
 
 @Service
 public class ProductWebserviceImpl implements ProductWebservice {
@@ -51,8 +51,8 @@ public class ProductWebserviceImpl implements ProductWebservice {
 		params.put("category", category);
 		params.put("page", String.valueOf(page));
 
-		HelperPage helperPage = restTemplate.getForObject(url + "/products/categories/{category}/{page}",
-				HelperPage.class, params);
+		HelperProductPage helperPage = restTemplate.getForObject(url + "/products/categories/{category}/{page}",
+				HelperProductPage.class, params);
 
 		return helperPage;
 	}

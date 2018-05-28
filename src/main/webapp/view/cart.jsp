@@ -32,7 +32,7 @@
 
 				<tr>
 					<td>SUBTOTAL (${overallQuantity} 
-				Items
+				Items)
 					</td>
 
 					<td class="rightTd">&dollar; <fmt:formatNumber type="number" maxFractionDigits="2"
@@ -77,7 +77,7 @@
 			<c:if test="${!empty cartProducts}">
 				<div id="checkout">
 					<div id="checkoutContent">Check Out</div>
-					<a href="/logged/showCheckoutShippingType">
+					<a href="/cart/showCheckoutShippingType">
 						<span class="link-spanner"></span>
 					</a>
 				</div>
@@ -103,7 +103,7 @@
 				<c:param name="productId">${cartProduct.product.id}</c:param>
 			</c:url>
 
-			<c:url var="removeCartProduct" value="/logged/removeCartProduct">
+			<c:url var="removeCartProduct" value="/cart/removeCartProduct">
 				<c:param name="productId">${cartProduct.product.id}</c:param>
 			</c:url>
 			<div id="cartProduct">
