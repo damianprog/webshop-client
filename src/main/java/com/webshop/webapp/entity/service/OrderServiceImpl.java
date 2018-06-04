@@ -54,6 +54,11 @@ public class OrderServiceImpl implements OrderService {
 		return orderWebservice.getOrdersByUserId(user.getId());
 	}
 
+	@Override
+	public List<Order> getOrdersByCreditCardId(int creditCardId) {
+		return orderWebservice.getOrdersByCreditCardId(creditCardId);
+	}
+
 	
 	
 }

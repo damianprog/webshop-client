@@ -226,11 +226,12 @@
 			<div id="rightTable">
 				<div id="billingLabel">Billing Address</div>
 				<br> <input id="billingCheckbox" type="checkbox"
-					name="defaultAddress" checked> Same as shipping
+					name="setDefaultAddress" checked> Same as shipping
 
 				<div id="billingAddress">
 					${address.firstName} ${address.lastName}<br> ${address.city},
 					${address.country} ${address.postCode}
+					<input type="hidden" name="addressId" value="${address.id}">
 				</div>
 
 				<table id="billingAddressTable">

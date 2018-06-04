@@ -22,8 +22,9 @@ import com.webshop.webapp.entity.UserDetails;
 import com.webshop.webapp.entity.service.CreditCardService;
 import com.webshop.webapp.entity.service.OrderService;
 import com.webshop.webapp.entity.service.UserService;
+import com.webshop.webapp.utils.AddOrEditPaymentModelInitilizer;
 import com.webshop.webapp.utils.CartProductsPhotosInitializer;
-import com.webshop.webapp.utils.CreditCardOperations;
+import com.webshop.webapp.utils.CreditCardDetailsInitializer;
 import com.webshop.webapp.utils.service.SaveService;
 
 @Controller
@@ -46,7 +47,10 @@ public class AccountController {
 	private CreditCardService creditCardService;
 
 	@Autowired
-	private CreditCardOperations creditCardOperations;
+	private CreditCardDetailsInitializer creditCardDetailsInitializer;
+
+	@Autowired
+	private AddOrEditPaymentModelInitilizer addOrEditPaymentModelInitilizer;
 
 	@GetMapping("/showShippingAddress")
 	public String shippingAddressPage(Model theModel, Principal principal) {
@@ -92,28 +96,15 @@ public class AccountController {
 	@GetMapping("/showAddOrEditPaymentMethod")
 	public String showAddOrEditPaymentMethod(Model theModel, Principal principal, HttpSession session) {
 
-		int userId = (int) session.getAttribute("userId");
+		addOrEditPaymentModelInitilizer.initializeModelAndViewString();
+		
+		theModel.addAllAttributes(addOrEditPaymentModelInitilizer.getModelMap());
 
-		User user = userService.getUserById(userId);
-
-		List<CreditCard> creditCards = creditCardService.getCreditCardsByUserId(userId);
-
-		if (creditCards.isEmpty()) {
-			theModel.addAttribute("noCreditCards", true);
-			theModel.addAttribute("creditCard", new CreditCard());
-			theModel.addAttribute("address", user.getUserDetails().getAddress());
-			theModel.addAttribute("updateCreditCard", false);
-
-			return "addOrEditPaymentMethod";
-		} else {
-			theModel.addAttribute("creditCardsList", creditCards);
-
-			return "creditCardsList";
-		}
+		return addOrEditPaymentModelInitilizer.getViewString();
 
 	}
 
-	@GetMapping("/editCreditCard")
+	@PostMapping("/editCreditCard")
 	public String editCreditCard(Model theModel, @RequestParam("creditCardId") int creditCardId) {
 
 		CreditCard creditCard = creditCardService.getCreditCardById(creditCardId);
@@ -126,7 +117,7 @@ public class AccountController {
 		return "addOrEditPaymentMethod";
 	}
 
-	@GetMapping("/removeCreditCard")
+	@PostMapping("/removeCreditCard")
 	public String removeCreditCard(Model theModel, @RequestParam("creditCardId") int creditCardId) {
 
 		creditCardService.removeCreditCardById(creditCardId);
@@ -139,11 +130,11 @@ public class AccountController {
 			@RequestParam(value = "setDefaultAddress", required = false) boolean setDefaultAddress,
 			@RequestParam(value = "setAsDefaultCreditCard", required = false) boolean setAsDefaultCreditCard,
 			@ModelAttribute("creditCard") CreditCard creditCard, Principal principal) {
-		
+
 		parameters.put("setDefaultAddress", String.valueOf(setDefaultAddress));
 		parameters.put("setAsDefaultCreditCard", String.valueOf(setAsDefaultCreditCard));
 		
-		creditCardOperations.change(creditCard, parameters);
+		creditCardDetailsInitializer.prepareAndSaveCreditCard(creditCard, parameters);
 
 		return "redirect:/account/showAddOrEditPaymentMethod";
 	}

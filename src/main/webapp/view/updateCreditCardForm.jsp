@@ -46,7 +46,7 @@
 					<input type="hidden" name="setAsDefaultCreditCard" value="true">
 					</c:when>
 					<c:otherwise>
-						<input name="setAsDefaultCreditCard" type="checkbox">Set as
+						<input name="setAsDefaultCreditCard" type="checkbox" checked>Set as
 				default credit card
 				</c:otherwise>
 				</c:choose>

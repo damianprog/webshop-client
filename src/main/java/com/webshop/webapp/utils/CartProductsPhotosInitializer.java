@@ -14,7 +14,7 @@ import com.webshop.webapp.utils.service.PhotoService;
 public class CartProductsPhotosInitializer {
 
 	@Autowired
-	PhotoService photoService;
+	private PhotoService photoService;
 	
 	public List<CartProduct> initialize(List<CartProduct> cartProducts,int width,int height) {
 		

@@ -36,4 +36,11 @@ public class AddressWebserviceImpl implements AddressWebservice{
 		
 	}
 
+	@Override
+	public Address saveAddressAndReturn(Address address) {
+		
+		return restTemplate.postForObject(url + "/addresses", address, Address.class);
+		
+	}
+
 }

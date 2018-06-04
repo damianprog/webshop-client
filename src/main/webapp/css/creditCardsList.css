@@ -30,14 +30,17 @@ body
 
 #details{
 	margin-left:20px;
+	width:250px;
 	float:left;
 }
 
-#edit{
+.edit{
+	cursor: pointer; 
 }
 
-#remove{
+.remove{
 	margin-top:40px;
+	cursor: pointer; 
 }
 
 #editAndRemove{
@@ -45,6 +48,10 @@ body
 	margin-left:70px;
 }
 
-#creditCard{
-	margin-top:20px;
+#creditCardDiv{
+	margin-top:50px;
+}
+
+submit{
+	display:"block";
 }

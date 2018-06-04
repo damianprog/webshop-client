@@ -16,16 +16,16 @@ import com.webshop.webapp.photos.ResizePhoto;
 public class PhotoServiceImpl implements PhotoService {
 
 	@Autowired
-	Base64Encoder base64Encoder;
+	private Base64Encoder base64Encoder;
 
 	@Autowired
-	MultipartImageConverter multipartImageConverter;
+	private MultipartImageConverter multipartImageConverter;
 
 	@Autowired
-	MultipartToFile multipartToFile;
+	private MultipartToFile multipartToFile;
 
 	@Autowired
-	ResizePhoto resizePhoto;
+	private ResizePhoto resizePhoto;
 
 	@Override
 	public String getEncodedImage(byte[] theEncodedBase64) {

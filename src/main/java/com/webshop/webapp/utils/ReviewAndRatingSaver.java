@@ -16,6 +16,7 @@ import com.webshop.webapp.entity.service.ProductService;
 import com.webshop.webapp.entity.service.RatingService;
 import com.webshop.webapp.entity.service.ReviewService;
 import com.webshop.webapp.entity.service.UserService;
+import com.webshop.webapp.factories.RatingFactory;
 
 @Component
 public class ReviewAndRatingSaver {
@@ -35,6 +36,9 @@ public class ReviewAndRatingSaver {
 	@Autowired
 	private RatingService ratingService;
 
+	@Autowired
+	private RatingFactory ratingFactory;
+	
 	private Review review;
 
 	private Rating rating;
@@ -47,22 +51,22 @@ public class ReviewAndRatingSaver {
 		ratingService.saveRating(rating);
 
 	}
-
+	
 	private void initializeReviewAndRating(ReviewAndRating rat) {
 
-		String userName = (String) session.getAttribute("userName");
-		User user = userService.getUserByUserName(userName);
+		int userId = (int) session.getAttribute("userId");
+		User user = userService.getUserById(userId);
 		Product product = productService.getProductById(rat.getProductId());
 
-		rating = new Rating();
+		rating = ratingFactory.createInstance();
 		rating.setProduct(product);
 		rating.setRate(rat.getRating());
 		rating.setUser(user);
 
 		review = rat.getReview();
-		review.setUser(user);
 		review.setProduct(product);
 		review.setRating(rating);
+		review.setUser(user);
 		review.setDate(String.valueOf(LocalDate.now()));
 
 	}

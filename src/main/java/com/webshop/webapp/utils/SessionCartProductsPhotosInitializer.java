@@ -16,10 +16,10 @@ import com.webshop.webapp.utils.service.PhotoService;
 public class SessionCartProductsPhotosInitializer {
 
 	@Autowired
-	PhotoService photoService;
+	private PhotoService photoService;
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	public void initialize() {
 

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CreditCard;
+import com.webshop.webapp.entity.CreditCardOperationsParameters;
 import com.webshop.webapp.entity.Order;
 import com.webshop.webapp.entity.OrderDetails;
 import com.webshop.webapp.entity.User;
@@ -65,7 +66,7 @@ public class CartController {
 		Cart cart = (Cart) session.getAttribute("cart");
 
 		cartService.initializeCartProductsPhotos();
-		cartService.countCartProductPrice();
+		cartService.countPriceForEachCartProduct();
 
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
 		theModel.addAttribute("overallPrice", cartService.countOverallCartProductsPrice());
@@ -124,6 +125,7 @@ public class CartController {
 		User user = userService.getUserByUserName(principal.getName());
 
 		order.setAddress(user.getUserDetails().getAddress());
+		order.setOverallValue(cartService.countOverallCartProductsPrice());
 
 		theModel.addAttribute("creditCard", new CreditCard());
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
@@ -140,7 +142,7 @@ public class CartController {
 
 		Order order = (Order) session.getAttribute("order");
 		Address newAddress = orderService.saveAddressAndReturn(address);
-		order.setAddress(newAddress);
+		order.setAddress(newAddress); 
 
 		theModel.addAttribute("creditCard", new CreditCard());
 		theModel.addAttribute("overallQuantity", cartService.countQuantityOfProductsInCart());
@@ -153,17 +155,17 @@ public class CartController {
 
 	@PostMapping("/saveOrder")
 	public String saveOrder(@ModelAttribute("creditCard") CreditCard creditCard,
-			@RequestParam Map<String, String> billingAddressMap,
-			@RequestParam(value = "defaultAddress", required = false) boolean isItDefaultBillingAddress,
-			@RequestParam(value = "isItDefaultCreditCard", required = false) boolean isItDefaultCreditCard, HttpSession session,
+			@RequestParam Map<String, String> parameters, HttpSession session,
+			@RequestParam(value = "setDefaultAddress", required = false) boolean setDefaultAddress,
+			@RequestParam(value = "setAsDefaultCreditCard", required = false) boolean setAsDefaultCreditCard,
 			Principal principal) {
 
+		parameters.put("setDefaultAddress", String.valueOf(setDefaultAddress));
+		parameters.put("setAsDefaultCreditCard", String.valueOf(setAsDefaultCreditCard));
+		
 		Order order = (Order) session.getAttribute("order");
-
-		OrderDetails orderDetails = new OrderDetails(isItDefaultBillingAddress, isItDefaultCreditCard, billingAddressMap,
-				creditCard);
-
-		sessionOrderService.instantiateOrderDetails(orderDetails);
+		
+		sessionOrderService.instantiateOrderDetails(parameters, creditCard);
 
 		orderService.saveOrder(order);
 

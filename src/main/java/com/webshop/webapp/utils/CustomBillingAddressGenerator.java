@@ -11,22 +11,26 @@ import com.webshop.webapp.entity.Address;
 import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.UserDetails;
 import com.webshop.webapp.entity.service.UserService;
+import com.webshop.webapp.factories.AddressFactory;
 
 @Component
 public class CustomBillingAddressGenerator {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
+	
+	@Autowired
+	private AddressFactory addressFactory;
 
 	public Address generate(Map<String, String> params) {
 
-		User user = userService.getUserByUserName((String) session.getAttribute("userName"));
+		User user = userService.getUserById((int) session.getAttribute("userId"));
 		UserDetails userDetails = user.getUserDetails();
 
-		Address billingAddress = new Address();
+		Address billingAddress = addressFactory.createInstance();
 
 		billingAddress.setFirstName(userDetails.getAddress().getFirstName());
 		billingAddress.setLastName(userDetails.getAddress().getLastName());

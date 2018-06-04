@@ -19,6 +19,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto|Spectral+SC"
 	rel="stylesheet">
+	<script src="/css/js/jquery-3.3.1.min.js"></script>
 </head>
 
 
@@ -35,44 +36,50 @@
 			</div>
 
 			<div id="creditCardsList">
-				<c:forEach var="creditCard" items="${creditCardsList}">
-					<div id="creditCard">
+				<c:forEach var="tempCreditCard" items="${creditCardsList}">
+					<div id="creditCardDiv">
 						<div id="masterCardLogo">
 							<img src="/css/img/masterCardBigger.png">
 						</div>
 
-						<c:url var="editCreditCard" value="/account/editCreditCard">
-							<c:param name="creditCardId">${creditCard.id}</c:param>
-						</c:url>
-						
-						<c:url var="removeCreditCard" value="/account/removeCreditCard">
-							<c:param name="creditCardId">${creditCard.id}</c:param>
-						</c:url>
 
 						<div id="details">
 
-							<div id="firstNameAndLastName">${creditCard.firstName} ${creditCard.lastName}</div>
+							<div id="firstNameAndLastName">${tempCreditCard.firstName}
+								${tempCreditCard.lastName}</div>
 							<br>
-							
-							<div id="cardNumber">${fn:substring(creditCard.cardNumber,0,4)} **** **** ****</div>
-	
+
+							<div id="cardNumber">${fn:substring(tempCreditCard.cardNumber,0,4)}
+								**** **** ****</div>
+
 							<div id="securityCode">***</div>
 						</div>
-						
+
 						<div id="editAndRemove">
-						
-							<div id="edit">
-								<a href="${editCreditCard}">Edit</a>
+
+							<div class="edit">
+								<form class="editForm" action="/account/editCreditCard" method="POST">
+									<input type="hidden" name="creditCardId"
+										value="${tempCreditCard.id}"> 
+										
+									<input type="submit" value="Edit">	
+								</form>
 							</div>
 							
 							<br>
-							
-							<div id="remove">
-								<a href="${removeCreditCard}">Remove</a>
+
+							<div class="remove">
+								<form class="removeForm" action="/account/removeCreditCard" method="POST">
+									<input type="hidden" name="creditCardId"
+										value="${tempCreditCard.id}"> 
+										
+										<input type="submit" value="Remove">	
+								</form>
 							</div>
-							
+
 						</div>
 					</div>
+					<div style="clear:both"></div>
 				</c:forEach>
 			</div>
 
@@ -80,5 +87,19 @@
 	</div>
 </body>
 
+<script type="text/javascript">
+// $(document).ready(function () {
+	 
+// 	$( ".edit" ).click(function() {
+// 		  $( ".editForm" ).submit();
+// 	});
+	
+// 	$( ".remove" ).click(function() {
+// 		  $( ".removeForm" ).submit();
+// 	});
+
+
+// });
+</script>
 
 </html>

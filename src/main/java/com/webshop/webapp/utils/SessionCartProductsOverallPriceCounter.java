@@ -1,7 +1,5 @@
 package com.webshop.webapp.utils;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +9,12 @@ import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
 
 @Component
-public class SessionCartProductsPriceCounter {
+public class SessionCartProductsOverallPriceCounter {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
-	public void countCartProductPrice() {
-
-		Cart cart = (Cart) session.getAttribute("cart");
-
-		for (CartProduct cp : cart.getCartProducts())
-			cp.setPrice(cp.getProduct().getPrice() * cp.getQuantity());
-
-	}
-
+	
 	public double countOverallValue() {
 
 		Cart cart = (Cart) session.getAttribute("cart");

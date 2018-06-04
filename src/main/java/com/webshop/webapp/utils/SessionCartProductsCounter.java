@@ -12,7 +12,7 @@ import com.webshop.webapp.entity.CartProduct;
 public class SessionCartProductsCounter {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	public int count() {
 

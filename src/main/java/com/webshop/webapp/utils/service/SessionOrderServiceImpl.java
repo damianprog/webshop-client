@@ -1,8 +1,12 @@
 package com.webshop.webapp.utils.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webshop.webapp.entity.CreditCard;
+import com.webshop.webapp.entity.CreditCardOperationsParameters;
 import com.webshop.webapp.entity.OrderDetails;
 import com.webshop.webapp.utils.SessionOrderDeliveryInstantiator;
 import com.webshop.webapp.utils.SessionOrderDetailsInstantiator;
@@ -26,8 +30,8 @@ public class SessionOrderServiceImpl implements SessionOrderService{
 	}
 
 	@Override
-	public void instantiateOrderDetails(OrderDetails orderDetails) {
-		sessionOrderDetailsInstantiator.instantiate(orderDetails);
+	public void instantiateOrderDetails(Map<String,String> params,CreditCard creditCard) {
+		sessionOrderDetailsInstantiator.instantiate(params,creditCard);
 	}
 
 	@Override

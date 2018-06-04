@@ -1,36 +1,43 @@
 package com.webshop.webapp.photos;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.imageio.ImageIO;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import net.coobird.thumbnailator.Thumbnails;
 
 @Component
 public class ResizePhoto {
 
-	public byte[] resize(byte[] bookPicBytes,int width,int height) throws IOException {
-		
-		InputStream in = new ByteArrayInputStream(bookPicBytes);
-		BufferedImage imgToResize = ImageIO.read(in);
-		BufferedImage resizedBookPic = resize(imgToResize, width, height);
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(resizedBookPic, "jpg", baos);
-		
-		byte[] bookPic = baos.toByteArray();
-		
+	@Autowired
+	private ThumbnailsResize thumbnailsResize;
+	
+	@Autowired
+	private FileFactory fileFactory;
+	
+	public byte[] resize(byte[] bookPicBytes, int width, int height) throws IOException {
+
+		InputStream inputStream = fileFactory.getByteArrayInputStream(bookPicBytes);
+		byte[] bookPic = {};
+
+		try {
+
+			BufferedImage bufferedImageToResize = fileFactory.getBufferedImage(inputStream);
+
+			BufferedImage resizedBufferedImage = thumbnailsResize.resize(bufferedImageToResize, width, height);
+
+			ByteArrayOutputStream byteArrayOutputStream = fileFactory.getByteArrayOutputStreamFromBufferedImage(resizedBufferedImage);
+			
+			bookPic = byteArrayOutputStream.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			inputStream.close();
+		}
+
 		return bookPic;
 	}
-	
-	public static BufferedImage resize(BufferedImage img, int newW, int newH) throws IOException {
-		return Thumbnails.of(img).size(newW, newH).asBufferedImage();
-	}
-	
+
 }

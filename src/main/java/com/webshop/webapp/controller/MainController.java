@@ -58,7 +58,7 @@ public class MainController {
 
 	@Autowired
 	private ReviewService reviewService;
-
+	
 	@GetMapping("/start")
 	public String start() {
 
@@ -84,6 +84,7 @@ public class MainController {
 		
 
 		return "product";
+		
 	}
 
 	@GetMapping("/signUp")

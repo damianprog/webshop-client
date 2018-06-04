@@ -18,4 +18,6 @@ public interface OrderWebservice {
 
 	public Address saveAddressAndReturn(Address address);
 
+	public List<Order> getOrdersByCreditCardId(int creditCardId);
+
 }

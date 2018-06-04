@@ -10,7 +10,7 @@ public interface CartService {
 
 	public void initializeCartProductsPhotos();
 
-	public void countCartProductPrice();
+	public void countPriceForEachCartProduct();
 
 	public double countOverallCartProductsPrice();
 

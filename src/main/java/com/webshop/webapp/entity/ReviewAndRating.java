@@ -5,10 +5,10 @@ public class ReviewAndRating {
 	private int productId;
 
 	private Review review;
-	
+
 	private int rating;
-	
-	public ReviewAndRating(int productId,Review review,int rating) {
+
+	public ReviewAndRating(int productId, Review review, int rating) {
 		this.productId = productId;
 		this.rating = rating;
 		this.review = review;

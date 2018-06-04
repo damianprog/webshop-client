@@ -20,4 +20,6 @@ public interface OrderService {
 
 	public List<Order> getOrdersForLoggedUser();
 
+	public List<Order> getOrdersByCreditCardId(int creditCardId);
+
 }

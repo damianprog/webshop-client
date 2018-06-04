@@ -63,4 +63,15 @@ public class OrderWebserviceImpl implements OrderWebservice {
 		return restTemplate.postForObject(url + "/addresses", address,Address.class);
 	}
 
+	@Override
+	public List<Order> getOrdersByCreditCardId(int creditCardId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("creditCardId", creditCardId);
+
+		ResponseEntity<Order[]> responseEntity = restTemplate.getForEntity(url + "/orders/creditCards/{creditCardId}",
+				Order[].class, params);
+		
+		return Arrays.asList(responseEntity.getBody());
+	}
+
 }

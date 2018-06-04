@@ -121,13 +121,6 @@
 
 		<div style="clear: both"></div>
 
-<!-- 		<div id="continue"> -->
-<!-- 			<div id="continueContent">Continue</div> -->
-<!-- 			<a href="/cart/showCheckoutShippingAddress"> <span -->
-<!-- 				class="link-spanner"></span> -->
-<!-- 			</a> -->
-<!-- 		</div> -->
-
 		<input id="continue" type="submit" form="deliveryTypeForm" value="Continue"/>
 
 		<hr id="firstHr">

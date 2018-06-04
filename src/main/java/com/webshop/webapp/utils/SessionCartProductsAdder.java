@@ -8,16 +8,20 @@ import org.springframework.stereotype.Component;
 import com.webshop.webapp.entity.Cart;
 import com.webshop.webapp.entity.CartProduct;
 import com.webshop.webapp.entity.service.ProductService;
+import com.webshop.webapp.factories.CartProductFactory;
 
 @Component
 public class SessionCartProductsAdder {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 
+	@Autowired
+	private CartProductFactory cartProductFactory;
+	
 	public void add(int productId, int quantity) {
 		Cart cart = (Cart) session.getAttribute("cart");
 		boolean contains = false;
@@ -33,7 +37,7 @@ public class SessionCartProductsAdder {
 		}
 
 		if (contains == false) {
-			CartProduct cpNew = new CartProduct();
+			CartProduct cpNew = cartProductFactory.createInstance();
 			cpNew.setProduct(productService.getProductById(productId));
 			cpNew.setQuantity(quantity);
 			cart.getCartProducts().add(cpNew);

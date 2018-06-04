@@ -49,8 +49,8 @@ public class CreditCardWebserviceImpl implements CreditCardWebservice {
 	}
 
 	@Override
-	public void save(CreditCard creditCard) {
-		restTemplate.postForObject(url + "/creditCards", creditCard, CreditCard.class);
+	public CreditCard save(CreditCard creditCard) {
+		return restTemplate.postForObject(url + "/creditCards", creditCard, CreditCard.class);
 	}
 
 	@Override

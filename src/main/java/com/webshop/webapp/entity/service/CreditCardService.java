@@ -14,7 +14,7 @@ public interface CreditCardService {
 	
 	public CreditCard getDefaultCreditCardByUserId(int userId);
 	
-	public void save(CreditCard creditCard);
+	public CreditCard save(CreditCard creditCard);
 	
 	public void update(CreditCard creditCard);
 

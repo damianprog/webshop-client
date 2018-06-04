@@ -10,9 +10,11 @@ import com.webshop.webapp.entity.CreditCard;
 import com.webshop.webapp.entity.User;
 import com.webshop.webapp.entity.service.CreditCardService;
 import com.webshop.webapp.entity.service.UserService;
+import com.webshop.webapp.factories.CreditCardFactory;
+import com.webshop.webapp.factories.ModelMapFactory;
 
 @Component
-public class PrepareOrCreateModelCreditCard {
+public class CreditCardModelInitializer {
 
 	@Autowired
 	private UserService userService;
@@ -23,6 +25,12 @@ public class PrepareOrCreateModelCreditCard {
 	@Autowired
 	private HttpSession session;
 	
+	@Autowired
+	private ModelMapFactory modelMapFactory;
+	
+	@Autowired
+	private CreditCardFactory creditCardFactory;
+	
 	public ModelMap prepareOrCreate() {
 
 		int userId = (int) session.getAttribute("userId");
@@ -31,13 +39,13 @@ public class PrepareOrCreateModelCreditCard {
 
 		CreditCard creditCard = creditCardService.getDefaultCreditCardByUserId(userId);
 
-		ModelMap modelMap = new ModelMap();
+		ModelMap modelMap = modelMapFactory.createInstance();
 
 		if (creditCard != null) {
 			modelMap.addAttribute("creditCard", creditCard);
 			modelMap.addAttribute("address", creditCard.getAddress());
 		} else {
-			modelMap.addAttribute("creditCard", new CreditCard());
+			modelMap.addAttribute("creditCard", creditCardFactory.createInstance());
 			modelMap.addAttribute("address", user.getUserDetails().getAddress());
 		}
 

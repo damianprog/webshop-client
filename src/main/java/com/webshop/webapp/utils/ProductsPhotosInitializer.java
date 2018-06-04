@@ -13,7 +13,7 @@ import com.webshop.webapp.utils.service.PhotoService;
 public class ProductsPhotosInitializer {
 
 	@Autowired
-	PhotoService photoService;
+	private PhotoService photoService;
 	
 	public List<Product> initialize(List<Product> products){
 		

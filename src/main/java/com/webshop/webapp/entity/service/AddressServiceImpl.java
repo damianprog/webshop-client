@@ -22,4 +22,9 @@ public class AddressServiceImpl implements AddressService{
 		addressWebservice.deleteAddressById(addressId);
 	}
 
+	@Override
+	public Address saveAddressAndReturn(Address address) {
+		return addressWebservice.saveAddressAndReturn(address);
+	}
+
 }

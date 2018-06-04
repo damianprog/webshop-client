@@ -8,4 +8,6 @@ public interface AddressService {
 
 	public void deleteAddressById(int addressId);
 	
+	public Address saveAddressAndReturn(Address address);
+	
 }

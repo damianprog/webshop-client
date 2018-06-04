@@ -12,7 +12,7 @@ import com.webshop.webapp.entity.CartProduct;
 public class SessionCartProductsRemover {
 
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 	
 	public void remove(int productId) {
 		
@@ -25,8 +25,6 @@ public class SessionCartProductsRemover {
 			}
 		}
 
-		session.setAttribute("cart", cart);
-		
 	}
 	
 }
